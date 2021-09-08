@@ -24,7 +24,7 @@
 \maketitle
 
 \section{Learning Algorithm}
-The learning algorithm is an implementation of the Deep Deterministic Policy Gradient algorithm as described in \cite{lillicrap2015continuous}. As the paper describes, the algorithm leverages (1) an actor network to approximate actor function, $\mu(s|\theta^{\mu})$, and a critic network to approximate the action-value function, $Q(s,a|\theta^Q)$, using the Bellman Equation (similar to Q-learning). The variable $s$ is the state, $a$ is the action, and $\theta^{\mu}$ and $\theta^{Q}$ are the actor and critic network weights, respectively.  The algorithm is suited only for continuous action spaces.
+The learning algorithm is an implementation of the Deep Deterministic Policy Gradient (DDPG) algorithm as described in \cite{lillicrap2015continuous}. As the paper describes, the algorithm leverages (1) an actor network to approximate the actor function, $\mu(s|\theta^{\mu})$, and a critic network to approximate the action-value function, $Q(s,a|\theta^Q)$, using the Bellman Equation (similar to Q-learning). The variable $s$ is the state, $a$ is the action, and $\theta^{\mu}$ and $\theta^{Q}$ are the actor and critic network weights, respectively.  The algorithm is suited only for continuous action spaces.
 
 \subsection{Hyperparameters}
 The following hyperparameters were used in the DDPG implementation:
@@ -127,7 +127,7 @@ The parallel agents are able to receive an average reward (over 100 episodes, an
 \end{figure}
 
 \section{Future Work}
-The optimal value for the variable max\_t could be explored further so that it could be reduced (thereby decreasing simulation time) while still maintaining the desired level of agent learning. From reviewing \enspace  OpenAI Spinning Up's implmentation, it could also be useful to reduce the scale of the Ornstein–Uhlenbeck process noise as training advances. Spinning Up also described ``Our DDPG implementation uses a trick to improve exploration at the start of training. For a fixed number of steps at the beginning, the agent takes actions which are sampled from a uniform random distribution over valid actions. After that, it returns to normal DDPG exploration \cite{SpinningUp2018} ." This detail could also provide interesting future work. 
+The optimal value for the variable max\_t could be explored further so that it could be reduced (thereby decreasing simulation time) while still maintaining the desired level of agent learning. From reviewing \enspace  OpenAI Spinning Up's implmentation, it could also be useful to reduce the scale of the Ornstein–Uhlenbeck process noise as training advances. Spinning Up also describes, ``Our DDPG implementation uses a trick to improve exploration at the start of training. For a fixed number of steps at the beginning, the agent takes actions which are sampled from a uniform random distribution over valid actions. After that, it returns to normal DDPG exploration \cite{SpinningUp2018} ." This detail could also provide interesting future work. 
 
 \bibliographystyle{plain}
 \bibliography{bib}
