@@ -24,7 +24,7 @@
 \maketitle
 
 \section{Learning Algorithm}
-The learning algorithm is an implementation of the Deep Deterministic Policy Gradient algorithm as described in \cite{lillicrap2015continuous}. As the paper describes, the algorithm leverages (1) an actor network to approximate actor function $\mu(s|\theta^{\mu})$ and a critic network to approximate the action-value function, $Q(s,a|\theta^Q)$ using the Bellman Equation (similar to Q-learning). The variable $s$ is the state, $a$ is the action, and $\theta^{\mu}$ and $\theta^{Q}$ are the actor and critic network weights, respectively.  The algorithm is suited only for continuous action spaces.
+The learning algorithm is an implementation of the Deep Deterministic Policy Gradient algorithm as described in \cite{lillicrap2015continuous}. As the paper describes, the algorithm leverages (1) an actor network to approximate actor function, $\mu(s|\theta^{\mu})$, and a critic network to approximate the action-value function, $Q(s,a|\theta^Q)$, using the Bellman Equation (similar to Q-learning). The variable $s$ is the state, $a$ is the action, and $\theta^{\mu}$ and $\theta^{Q}$ are the actor and critic network weights, respectively.  The algorithm is suited only for continuous action spaces.
 
 \subsection{Hyperparameters}
 The following hyperparameters were used in the DDPG implementation:
@@ -42,7 +42,7 @@ The following hyperparameters were used in the DDPG implementation:
 It is also important to note that the selection of the maximum number of timesteps in an episode, max\_t, was critical for agent learning. When max\_t originally equaled 300, the average reward plateaued at about 10. After increasing max\_t to 20,000 and maintaining the hyperparameters listed above, the agent reached the desired average reward of +30.
 
 \section{Model Architecture}
-The DDPG algorithm employs to neural networks, the actor network and the critic network. Form both networks, the input passes through two linear layers with relu activation. For the actor network, the hidden layers are followed by a tanh output layer. For the critic network, the hidden layers are followed by a linear output layer. The two hidden layers for each network each are comprised of 256 nodes. The code implementation is shown below. 
+The DDPG algorithm employs two neural networks, the actor network and the critic network. For both networks, the input passes through two linear layers with relu activation. For the actor network, the hidden layers are followed by a tanh output layer. For the critic network, the hidden layers are followed by a linear output layer. The two hidden layers for each network each are comprised of 256 nodes. The code implementation is shown below. 
 
 \begin{lstlisting}[language=Python]
 def hidden_init(layer):
@@ -117,7 +117,7 @@ class Critic(nn.Module):
 \end{lstlisting}
 
 \section{Results}
-The parallel agents are able to receive an average reward (over 100 episodes, and over all 20 agents) of at least +30 in 104 episodes, as shown in Fig. \ref{fig:results}.
+The parallel agents are able to receive an average reward (over 100 episodes, and over all 20 agents) of at least +30 in 104 episodes, as shown in Figure \ref{fig:results}.
 
 \begin{figure}[ht]
 \centering
@@ -127,9 +127,12 @@ The parallel agents are able to receive an average reward (over 100 episodes, an
 \end{figure}
 
 \section{Future Work}
-The optimal value for the variable max\_t could be explored further so that it could be reduced (thereby decreasing simulation time) while still maintaining the desired level of agent learning. From reviewing OpenAI Spinning Up's implmentation, it could also be useful to reduce the scale of the Ornstein–Uhlenbeck process noise as training advances. Spinning Up also described ``Our DDPG implementation uses a trick to improve exploration at the start of training. For a fixed number of steps at the beginning, the agent takes actions which are sampled from a uniform random distribution over valid actions. After that, it returns to normal DDPG exploration \ref{SpinningUp2018}." This detail could also be interesting future work. 
+The optimal value for the variable max\_t could be explored further so that it could be reduced (thereby decreasing simulation time) while still maintaining the desired level of agent learning. From reviewing \enspace  OpenAI Spinning Up's implmentation, it could also be useful to reduce the scale of the Ornstein–Uhlenbeck process noise as training advances. Spinning Up also described ``Our DDPG implementation uses a trick to improve exploration at the start of training. For a fixed number of steps at the beginning, the agent takes actions which are sampled from a uniform random distribution over valid actions. After that, it returns to normal DDPG exploration \cite{SpinningUp2018} ." This detail could also provide interesting future work. 
 
 \bibliographystyle{plain}
 \bibliography{bib}
+
+
+
 
 \end{document}
